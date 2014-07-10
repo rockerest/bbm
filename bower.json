@@ -20,9 +20,8 @@
   "dependencies": {
     "require": "requirejs#~2.1.14",
     "font-awesome": "~4.1.0",
-    "requirejs-text": "~2.0.12"
-  },
-  "devDependencies": {
+    "requirejs-text": "~2.0.12",
+    "backbone": "~1.1.2",
     "marionette": "~2.0.1"
   },
   "exportsOverride": {
