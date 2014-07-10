@@ -10,12 +10,22 @@ requirejs.config({
         "text":                 "../vendor/requirejs-text/text",
 
         "jquery":               ["//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min", "../vendor/jquery/jquery"]
+    },
+    "shim": {
+        "backbone": {
+            "exports": "Backbone"
+        },
+        "underscore": {
+            "exports": "_"
+        }
     }
 });
 
 require(
-    ["bbm"],
-    function( BBM ){
-        BBM.start();
+    ["jquery", "views/bbm"],
+    function( $, BBM ){
+        $(function(){
+            new BBM();
+        });
     }
 );
