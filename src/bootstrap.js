@@ -1,8 +1,8 @@
 requirejs.config({
     "paths": {
-        "marionette":           "../vendor/marionette/backbone.marionette",
+        /*"marionette":           "../vendor/marionette/backbone.marionette",
         "backbone.babysitter":  "../vendor/backbone.babysitter/backbone.babysitter",
-        "backbone.wreqr":       "../vendor/backbone.wreqr/backbone.wreqr",
+        "backbone.wreqr":       "../vendor/backbone.wreqr/backbone.wreqr",*/
 
         "backbone":             "../vendor/backbone/backbone",
         "underscore":           "../vendor/underscore/underscore",
