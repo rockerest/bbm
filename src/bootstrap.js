@@ -5,12 +5,14 @@ requirejs.config({
         "backbone.babysitter":  "../vendor/backbone.babysitter/backbone.babysitter",
         "backbone.wreqr":       "../vendor/backbone.wreqr/backbone.wreqr",*/
 
+        // LIBRARIES
         "backbone":             "../vendor/backbone/backbone",
         "underscore":           "../vendor/underscore/underscore",
+        "jquery":               ["//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery", "../vendor/jquery/jquery"],
 
+        // LIBRAR PLUGINS
         "text":                 "../vendor/requirejs-text/text",
-
-        "jquery":               ["//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min", "../vendor/jquery/jquery"]
+        "localstorage":         "../vendor/backbone.localstorage/backbone.localStorage"
     },
     "shim": {
         "backbone": {
@@ -23,5 +25,12 @@ requirejs.config({
 });
 
 require(
-    ["jquery", "routes"]
+    ["routes"],
+    function( Routes ){
+        window.bbm = {
+            "channels": {}
+        };
+
+        Routes.startup();
+    }
 );
