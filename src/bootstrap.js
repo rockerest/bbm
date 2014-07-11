@@ -1,4 +1,5 @@
 requirejs.config({
+    "urlArgs": "_=" + (new Date()).getTime(),
     "paths": {
         /*"marionette":           "../vendor/marionette/backbone.marionette",
         "backbone.babysitter":  "../vendor/backbone.babysitter/backbone.babysitter",
@@ -22,8 +23,5 @@ requirejs.config({
 });
 
 require(
-    ["jquery", "backbone", "routes"],
-    function( $, Backbone ){
-        Backbone.history.start();
-    }
+    ["jquery", "routes"]
 );

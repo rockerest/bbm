@@ -1,18 +1,26 @@
 define(
     ["require", "backbone", "underscore",
+    "views/navigation",
     "routers/bbm", "routers/thing"],
     function(
         require, Backbone, _,
-        rBbm, rThing
+        NavigationView,
+        BbmRouter, ThingRouter
     ){
-        var path = "routers/",
-            routers = [
-                rBbm,
-                rThing
-            ];
+        var routers = [
+                BbmRouter,
+                ThingRouter
+            ],
+            count = 0,
+            nav = new NavigationView(); //Always load the navigation before routing starts
 
         _( routers ).each( function( r, i ){
+            ++count;
             r.register();
+
+            if( count === routers.length ){
+                Backbone.history.start();
+            }
         });
     }
 );
