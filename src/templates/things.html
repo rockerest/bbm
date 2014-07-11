@@ -1,0 +1,12 @@
+These are things:
+<br />
+<ul>
+<%
+    things.each( function( i, x ){
+        %>
+        <li><%= i.get( "description" ) %></li>
+        <%
+    });
+%>
+</ul>
+<button>Add a new thing</button>
