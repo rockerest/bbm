@@ -22,10 +22,8 @@ requirejs.config({
 });
 
 require(
-    ["jquery", "views/bbm"],
-    function( $, BBM ){
-        $(function(){
-            new BBM();
-        });
+    ["jquery", "backbone", "routes"],
+    function( $, Backbone ){
+        Backbone.history.start();
     }
 );
