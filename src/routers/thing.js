@@ -1,6 +1,6 @@
 define(
-    ["backbone", "views/thing"],
-    function( Backbone, ThingView ){
+    ["backbone", "views/things"],
+    function( Backbone, ThingsView ){
         var mod = {},
             ThingRouter = Backbone.Router.extend({
                 routes: {
@@ -12,7 +12,7 @@ define(
             var rtr = new ThingRouter;
 
             rtr.on('route:things', function(){
-                new ThingView();
+                new ThingsView();
             });
         }
 
