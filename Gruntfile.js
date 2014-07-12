@@ -15,5 +15,16 @@ module.exports = function( grunt ){
     // Non-contrib tasks
     grunt.loadNpmTasks( 'grunt-bower-task' );
 
-    grunt.registerTask( 'default', ['bower:install'] );
+    // Custom tasks
+    grunt.registerTask( 'clean', "Wipe the build directory", function(){
+        grunt.file.delete( "./build" );
+        grunt.file.mkdir( "./build" );
+    });
+
+    grunt.registerTask( 'prepare', "Prepare directory structure for anything necessary", function(){
+        grunt.task.run( ['clean'] );
+        grunt.file.mkdir( "./vendor" );
+    });
+
+    grunt.registerTask( 'default', ['prepare', 'bower:install'] );
 };
