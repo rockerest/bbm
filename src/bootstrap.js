@@ -24,13 +24,13 @@ requirejs.config({
     }
 });
 
+window.bbm = {
+    "channels": {}
+};
+
 require(
     ["routes"],
     function( Routes ){
-        window.bbm = {
-            "channels": {}
-        };
-
         Routes.startup();
     }
 );
