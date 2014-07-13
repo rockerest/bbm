@@ -1,10 +1,6 @@
 requirejs.config({
     "urlArgs": "_=" + (new Date()).getTime(),
     "paths": {
-        /*"marionette":           "../vendor/marionette/backbone.marionette",
-        "backbone.babysitter":  "../vendor/backbone.babysitter/backbone.babysitter",
-        "backbone.wreqr":       "../vendor/backbone.wreqr/backbone.wreqr",*/
-
         // LIBRARIES
         "backbone":             "../vendor/backbone/backbone",
         "underscore":           "../vendor/underscore/underscore",
