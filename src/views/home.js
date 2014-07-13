@@ -1,5 +1,5 @@
 define(
-    ["backbone", "underscore", "text!templates/home.html"],
+    ["backbone", "underscore", "text!templates/views/home.html"],
     function( Backbone, _, HomeTmpl ){
         var Bbm = Backbone.View.extend({
             "el": "#application .main",

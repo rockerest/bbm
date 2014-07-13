@@ -3,7 +3,7 @@ define(
         // Libraries
         "backbone", "underscore",
         // Dependencies
-        "text!templates/things.html", "collections/things", "events/things"
+        "text!templates/views/things.html", "collections/things", "events/things"
     ],
 
     function( Backbone, _, ThingTmpl, Things, vent ){

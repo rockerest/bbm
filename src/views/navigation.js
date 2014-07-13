@@ -1,5 +1,5 @@
 define(
-    ["backbone", "underscore", "text!templates/navigation.html"],
+    ["backbone", "underscore", "text!templates/views/navigation.html"],
     function( Backbone, _, NavTmpl ){
         var Bbm = Backbone.View.extend({
             "el": "#application nav",
