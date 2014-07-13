@@ -1,5 +1,5 @@
 define(
-    ["backbone", "layouts/bbm", "views/home"],
+    ["backbone", "layouts/bbm", "views/pages/home"],
     function( Backbone, BbmLayout, HomeView ){
         var mod = {},
             BbmRouter = Backbone.Router.extend({

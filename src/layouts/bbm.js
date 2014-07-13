@@ -1,5 +1,5 @@
 define(
-	["backbone", "underscore", "layout", "text!templates/layouts/bbm.html", "views/navigation"],
+	["backbone", "underscore", "layout", "text!templates/layouts/bbm.html", "views/chrome/navigation"],
 	function( Backbone, _, Layout, LytTemplate, NavView ){
 		var BbmLayout = function( regions ){
 			this.regions = {
