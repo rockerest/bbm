@@ -4,7 +4,7 @@ These are things:
 <%
     things.each( function( i, x ){
         %>
-        <li><%= i.get( "description" ) %></li>
+        <li data-id="<%= i.get( "id" ) %>"><%= i.get( "description" ) %></li>
         <%
     });
 %>
