@@ -12,7 +12,10 @@ define(
                 "template": _.template( ThingTmpl ),
 
                 "events": {
-                    "click button": function(){ vent.trigger( "add:thing" ); }
+                    "click button": function(){ vent.trigger( "add:thing" ); },
+                    "click li": function( e ){
+                        vent.trigger( "edit:thing", {"id": this.$( e.target ).data( "id" )} );
+                    }
                 },
 
                 "render": function(){
