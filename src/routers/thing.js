@@ -10,7 +10,7 @@ define(
             rtr.route( "things",                "things"        );
             rtr.route( /thing\/(\w+)$/,         "do"            );
             rtr.route( /thing\/(\d+)$/,         "viewThing"     );
-            rtr.route( /thing\/(\w+)\/(\d+)$/,  "modifyThing"   );
+            rtr.route( /thing\/(\w+)\/([\d\w\-]+)$/,  "modifyThing"   );
 
             rtr.on('route:things', function(){
                 var layout = new BbmLayout({"main": ThingsView});
