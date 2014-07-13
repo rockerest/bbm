@@ -38,14 +38,18 @@ define(
             });
 		};
 
-		Layout.prototype.renderRegions = function(){
+		Layout.prototype.renderRegions = function( data ){
 			var self = this;
+
+			if( data === undefined ){
+				data = {};
+			}
 
 			_( this.regions ).each( function( region, name, list ){
 				var view = self.views[ name ];
 				view.el = region;
 
-				new view();
+				new view( data[ name ] );
 			});
 		};
 

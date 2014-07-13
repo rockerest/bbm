@@ -26,11 +26,11 @@ define(
 			return this;
 		};
 
-		BbmLayout.prototype.render = function(){
+		BbmLayout.prototype.render = function( data ){
 			var layout = this.build();
 
 			new layout();
-			this.renderRegions();
+			this.renderRegions( data );
 		};
 
 		return BbmLayout;
