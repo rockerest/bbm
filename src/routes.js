@@ -2,14 +2,11 @@ define(
     [
         // Libraries
         "require", "backbone", "underscore",
-        // Application-level Views
-        "views/navigation",
         // Routers
         "routers/bbm", "routers/thing"
     ],
     function(
         require, Backbone, _,
-        NavigationView,
         BbmRouter, ThingRouter
     ){
         var Routes = {};
