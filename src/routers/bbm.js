@@ -1,6 +1,6 @@
 define(
-    ["backbone", "views/home"],
-    function( Backbone, HomeView ){
+    ["backbone", "layouts/bbm", "views/home"],
+    function( Backbone, BbmLayout, HomeView ){
         var mod = {},
             BbmRouter = Backbone.Router.extend({
                 routes: {
@@ -12,7 +12,11 @@ define(
             var rtr = new BbmRouter;
 
             rtr.on('route:home', function(){
-                new HomeView();
+                var Layout = new BbmLayout({"main": HomeView});
+
+                Layout
+                    .setup()
+                    .render();
             });
         }
 

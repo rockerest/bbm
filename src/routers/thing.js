@@ -1,6 +1,6 @@
 define(
-    ["backbone", "views/things"],
-    function( Backbone, ThingsView ){
+    ["backbone", "layouts/bbm", "views/things"],
+    function( Backbone, BbmLayout, ThingsView ){
         var mod = {},
             ThingRouter = Backbone.Router.extend({
                 routes: {
@@ -12,7 +12,11 @@ define(
             var rtr = new ThingRouter;
 
             rtr.on('route:things', function(){
-                new ThingsView();
+                var layout = new BbmLayout({"main": ThingsView});
+
+                layout
+                    .setup()
+                    .render();
             });
         }
 

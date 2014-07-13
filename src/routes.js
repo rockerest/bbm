@@ -19,8 +19,7 @@ define(
                     BbmRouter,
                     ThingRouter
                 ],
-                count = 0,
-                nav = new NavigationView(); //Always load the navigation before routing starts
+                count = 0;
 
             _( routers ).each( function( r, i ){
                 ++count;
