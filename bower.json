@@ -4,7 +4,7 @@
   "authors": [
     "rockerest <websites@thomasrandolph.info>"
   ],
-  "description": "Sample Backbone / Marionette application",
+  "description": "Sample Backbone application",
   "moduleType": [
     "amd"
   ],
