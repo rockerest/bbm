@@ -1,12 +1,32 @@
-Available seminars:
-<br />
-<ul>
-<%
-    seminars.each( function( c, x ){
-        %>
-        <li data-id="<%= c.get( "id" ) %>"><%= c.get( "name" ) %></li>
-        <%
-    });
-%>
-</ul>
-<button>Add a seminar</button>
+<section>
+    <header>
+        <h2>
+            Available seminars:
+        </h2>
+    </header>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Seminar Title</th>
+                </tr>
+            </thead>
+            <tfoot>
+            </tfoot>
+            <tbody>
+                <%
+                    seminars.each( function( c, x ){
+                        %>
+                        <tr data-id="<%= c.get( "id" ) %>">
+                            <td><%= c.get( "name" ) %></td>
+                        </tr>
+                        <%
+                    });
+                %>
+            </tbody>
+        </table>
+    </div>
+    <footer>
+        <button>Add a seminar</button>
+    </footer>
+</section>
