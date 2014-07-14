@@ -7,10 +7,10 @@ define(
         mod.register = function(){
             var rtr = new SeminarRouter;
 
-            rtr.route( "seminars",                       "seminars"       );
-            rtr.route( /seminar\/(\w+)$/,                 "do"            );
-            rtr.route( /seminar\/(\d+)$/,                 "viewSeminar"     );
-            rtr.route( /seminar\/(\w+)\/([\d\w\-]+)$/,    "modifySeminar"   );
+            rtr.route( "seminars",                      "seminars"      );
+            rtr.route( /seminar\/(\w+)$/,               "do"            );
+            rtr.route( /seminar\/(\d+)$/,               "viewSeminar"   );
+            rtr.route( /seminar\/(\w+)\/([\d\w\-]+)$/,  "modifySeminar" );
 
             rtr.on('route:seminars', function(){
                 var layout = new ScheletonLayout({"main": SeminarsView});
