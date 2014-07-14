@@ -1,0 +1,32 @@
+<section>
+    <header>
+        <h2>
+            Enrolled students:
+        </h2>
+    </header>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                </tr>
+            </thead>
+            <tfoot>
+            </tfoot>
+            <tbody>
+                <%
+                    students.each( function( stu, x ){
+                        %>
+                        <tr data-id="<%= stu.get( "id" ) %>">
+                            <td><%= stu.get( "name" ) %></td>
+                        </tr>
+                        <%
+                    });
+                %>
+            </tbody>
+        </table>
+    </div>
+    <footer>
+        <button>Enroll a student</button>
+    </footer>
+</section>

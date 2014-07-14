@@ -3,18 +3,19 @@ define(
         // Libraries
         "require", "backbone", "underscore",
         // Routers
-        "routers/scheleton", "routers/seminars"
+        "routers/scheleton", "routers/seminars", "routers/students"
     ],
     function(
         require, Backbone, _,
-        ScheletonRouter, SeminarsRouter
+        ScheletonRouter, SeminarsRouter, StudentsRouter
     ){
         var Routes = {};
 
         Routes.startup = function(){
             var routers = [
                     ScheletonRouter,
-                    SeminarsRouter
+                    SeminarsRouter,
+                    StudentsRouter
                 ],
                 count = 0;
 
