@@ -8,13 +8,13 @@ define(
 
     function( Backbone, _, SeminarsTmpl, Seminars, vent ){
         var SeminarsView = Backbone.View.extend({
-                "el": "#application .main",
+                "el": "#main",
                 "template": _.template( SeminarsTmpl ),
 
                 "events": {
                     "click button": function(){ vent.trigger( "add:seminar" ); },
-                    "click li": function( e ){
-                        vent.trigger( "edit:seminar", {"id": this.$( e.target ).data( "id" )} );
+                    "click tr": function( e ){
+                        vent.trigger( "edit:seminar", {"id": this.$( e.currentTarget ).data( "id" )} );
                     }
                 },
 

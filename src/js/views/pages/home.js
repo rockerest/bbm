@@ -7,7 +7,7 @@ define(
     ],
     function( Backbone, _, HomeTmpl ){
         var Bbm = Backbone.View.extend({
-            "el": "#application .main",
+            "el": "#main",
             "template": _.template( HomeTmpl ),
 
             "render": function(){
