@@ -3,18 +3,18 @@ define(
         // Libraries
         "require", "backbone", "underscore",
         // Routers
-        "routers/bbm", "routers/thing"
+        "routers/scheleton", "routers/seminars"
     ],
     function(
         require, Backbone, _,
-        BbmRouter, ThingRouter
+        ScheletonRouter, SeminarsRouter
     ){
         var Routes = {};
 
         Routes.startup = function(){
             var routers = [
-                    BbmRouter,
-                    ThingRouter
+                    ScheletonRouter,
+                    SeminarsRouter
                 ],
                 count = 0;
 

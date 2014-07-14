@@ -1,20 +1,20 @@
 define(
-    ["backbone", "layouts/bbm", "views/pages/home"],
-    function( Backbone, BbmLayout, HomeView ){
+    ["backbone", "layouts/scheleton", "views/pages/home"],
+    function( Backbone, ScheletonLayout, HomeView ){
         var mod = {},
-            BbmRouter = Backbone.Router.extend({
+            ScheletonRouter = Backbone.Router.extend({
                 routes: {
                     "(/)": "home"
                 }
             });
 
         mod.register = function(){
-            var rtr = new BbmRouter;
+            var rtr = new ScheletonRouter;
 
             rtr.on('route:home', function(){
-                var Layout = new BbmLayout({"main": HomeView});
+                var layout = new ScheletonLayout({"main": HomeView});
 
-                Layout
+                layout
                     .setup()
                     .render();
             });

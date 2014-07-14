@@ -1,0 +1,12 @@
+Available seminars:
+<br />
+<ul>
+<%
+    seminars.each( function( c, x ){
+        %>
+        <li data-id="<%= c.get( "id" ) %>"><%= c.get( "name" ) %></li>
+        <%
+    });
+%>
+</ul>
+<button>Add a seminar</button>
