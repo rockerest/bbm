@@ -1,0 +1,33 @@
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+
+*{
+    color: inherit;
+    font-family: 'Droid Sans', sans-serif;
+}
+
+h1{
+    font-size: 3em;
+}
+
+h2{
+    font-size: 2em;
+}
+
+h1, h2, h3, h4, h5, h6{
+    text-align: center;
+    color: $primary;
+}
+
+label{
+    color: $primary;
+}
+
+a{
+    color: $complementary;
+}
+
+.highlight{
+    color: $text-highlight;
+}
+
+@import "../../../vendor/font-awesome/scss/font-awesome.scss";
