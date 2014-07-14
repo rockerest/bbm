@@ -1,19 +1,12 @@
 section{
     background-color: $reading;
-    padding: 1em;
     margin: 1em auto 0;
     text-align: left;
     line-height: 1.5;
 
+    overflow: hidden;
+
     @include border-radius( 0.4em );
-
-    > h1{
-        text-align: left;
-    }
-
-    h1 + hr{
-        margin: -1em 0 1em;
-    }
 }
 
 article > section:first-of-type{
