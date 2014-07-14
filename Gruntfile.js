@@ -9,8 +9,36 @@ module.exports = function( grunt ){
                     "verbose": true
                 }
             }
+        },
+        "sass": {
+            "dev": {
+                "options": {
+                    "style": 'expanded'
+                },
+                "files": {
+                    "build/css/screen.min.css": "src/sass/screen.scss"
+                }
+            },
+            "prod": {
+                "options": {
+                    "style": 'compressed'
+                },
+                "files": {
+                    "build/css/screen.min.css": "src/sass/screen.scss"
+                }
+            }
+        },
+        "watch": {
+            "sass": {
+                "files": ['src/sass/**/*.scss'],
+                "tasks": ['sass:dev']
+            }
         }
     });
+
+    // contrib tasks
+    grunt.loadNpmTasks( 'grunt-contrib-sass' );
+    grunt.loadNpmTasks( 'grunt-contrib-watch' );
 
     // Non-contrib tasks
     grunt.loadNpmTasks( 'grunt-bower-task' );
@@ -26,5 +54,6 @@ module.exports = function( grunt ){
         grunt.file.mkdir( "./vendor" );
     });
 
-    grunt.registerTask( 'default', ['prepare', 'bower:install'] );
+    grunt.registerTask( 'setup', ['prepare', 'bower:install'] );
+    grunt.registerTask( 'default', ['sass:dev', 'watch:sass'] );
 };
