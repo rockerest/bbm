@@ -9,6 +9,10 @@ section{
     @include border-radius( 0.4em );
 }
 
+section > div:first-of-type{
+    padding: 1em;
+}
+
 article > section:first-of-type{
     margin-top: 0em;
 }
