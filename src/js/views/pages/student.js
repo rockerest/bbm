@@ -3,10 +3,10 @@ define(
         // Libraries
         "backbone", "underscore",
         // Dependencies
-        "text!templates/views/student.html", "collections/students", "events/students"
+        "text!templates/views/student.html", "collections/students", "collections/seminars", "events/students"
     ],
 
-    function( Backbone, _, StudentTmpl, Students, vent ){
+    function( Backbone, _, StudentTmpl, Students, Seminars, vent ){
         var StudentsView = Backbone.View.extend({
                 "el": "#main",
                 "template": _.template( StudentTmpl ),
@@ -18,6 +18,15 @@ define(
                             "student": this.student,
                             "event": e
                         });
+
+                        return false;
+                    },
+                    "keyup input#seminar": function( e ){
+                        vent.trigger( "edit:student:seminar:autocomplete", {
+                            "event": e
+                        });
+
+                        return false;
                     },
                     "click button.create": function(){
                         vent.trigger( "add:student:create", {
@@ -36,13 +45,23 @@ define(
                     },
                     "click button.cancel": function(){
                         vent.trigger( "student:cancel" );
+                    },
+                    "click button.enroll": function(){
+                        vent.trigger( "edit:student:enroll", {
+                            "id": this.$("input#seminar").data( "id" ),
+                            "student": this.student
+                        });
                     }
                 },
 
                 "render": function(){
+                    var seminars = new Seminars();
+                    seminars.fetch();
+
                     this.$el.html(
                         this.template({
                             "student": this.student,
+                            "seminars": seminars,
                             "action": this.action,
                             "go": this.go
                         })

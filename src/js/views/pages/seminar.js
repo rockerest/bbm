@@ -3,10 +3,10 @@ define(
         // Libraries
         "backbone", "underscore",
         // Dependencies
-        "text!templates/views/seminar.html", "collections/seminars", "events/seminars"
+        "text!templates/views/seminar.html", "collections/seminars", "collections/students", "events/seminars"
     ],
 
-    function( Backbone, _, SeminarTmpl, Seminars, vent ){
+    function( Backbone, _, SeminarTmpl, Seminars, Students, vent ){
         var SeminarsView = Backbone.View.extend({
                 "el": "#main",
                 "template": _.template( SeminarTmpl ),
@@ -43,6 +43,7 @@ define(
                     this.$el.html(
                         this.template({
                             "seminar": this.seminar,
+                            "enrolledStudents": this.students,
                             "action": this.action,
                             "go": this.go
                         })
@@ -53,9 +54,12 @@ define(
 
                 "initialize": function( data ){
                     var cData = {},
-                        seminars = new Seminars();
+                        seminars = new Seminars(),
+                        students = new Students(),
+                        seminarStudents;
 
                     seminars.fetch();
+                    students.fetch();
 
                     if( data.action ){
                         this.action = data.action;
@@ -75,6 +79,10 @@ define(
                     else{
                         this.go = ["Add", "create"];
                     }
+
+                    this.students = _( this.seminar.getStudents() ).map( function( student ){
+                        return students.get( student );
+                    });
 
                     this.render();
                 }
