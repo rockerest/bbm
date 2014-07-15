@@ -18,8 +18,8 @@
                     students.each( function( stu, x ){
                         %>
                         <tr data-id="<%= stu.get( "id" ) %>">
-                            <td><%= stu.get( "name" ) %></td>
-                            <td><%= stu.get( "seminars" ).length %></td>
+                            <td><%= stu.getName() %></td>
+                            <td><%= stu.getSeminars().length %></td>
                         </tr>
                         <%
                     });

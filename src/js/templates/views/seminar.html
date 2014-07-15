@@ -10,7 +10,7 @@
                 name="name"
                 id="name"
                 placeholder="Enter a name for the seminar"
-                value="<%= seminar.get( "name" ) %>"
+                value="<%= seminar.getName() %>"
             />
         </form>
         <% if( action === "edit" ){ %>
@@ -29,8 +29,8 @@
                     _( enrolledStudents ).each(function( student, i ){
                     %>
                         <tr>
-                            <td><%= student.get( "name" ) %></td>
-                            <td><%= student.get( "seminars" ).length || 0 %></td>
+                            <td><%= student.getName() %></td>
+                            <td><%= student.getSeminars().length || 0 %></td>
                         </tr>
                     <%
                     });

@@ -10,7 +10,7 @@
                 name="name"
                 id="name"
                 placeholder="Enter the student's name"
-                value="<%= student.get( "name" ) %>"
+                value="<%= student.getName() %>"
             />
         </form>
         <% if( action === "edit" ){ %>
@@ -28,7 +28,7 @@
                         <input type="text" name="seminar" id="seminar" placeholder="Type a seminar name" value="" />
                     </td>
                     <td>
-                        <button class="enroll">Enroll <%= student.get( "name" ) %></button>
+                        <button class="enroll">Enroll <%= student.getName() %></button>
                     </td>
                 </tr>
             </tfoot>
@@ -38,8 +38,8 @@
                         var seminar = seminars.findWhere({"id": id});
                     %>
                         <tr>
-                            <td><%= seminar.get( "name" ) %></td>
-                            <td><%= seminar.get( "students" ).length || 0 %></td>
+                            <td><%= seminar.getName() %></td>
+                            <td><%= seminar.getStudents().length || 0 %></td>
                         </tr>
                     <%
                     });
