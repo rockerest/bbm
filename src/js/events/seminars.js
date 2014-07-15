@@ -1,10 +1,13 @@
 define(
     [
     	// Libraries
-    	"backbone", "underscore"
+    	"backbone", "underscore",
+        // Dependencies
+        "collections/students"
     ],
-    function( Backbone, _ ){
+    function( Backbone, _, Students ){
         var vent = window.bbm.channels.seminars || _.extend( {}, Backbone.Events ),
+            students = new Students(),
         	rtr = Backbone.Router.extend(),
         	workspace = new rtr(),
             ENTER_KEY_CODE = 13;
@@ -20,7 +23,7 @@ define(
         vent.on( "add:seminar:name", function( data ){
             var e = data.event,
                 key = e.keyCode || e.which;
-            data.seminar.set( "name", data.name );
+            data.seminar.setName( data.name );
             if( key == ENTER_KEY_CODE ){
                 vent.trigger( "edit:seminar:save", {
                     "seminar": data.seminar
@@ -43,6 +46,14 @@ define(
         });
 
         vent.on( "edit:seminar:delete", function( data ){
+            var student;
+
+            students.fetch();
+            _( data.seminar.get( "students" ) ).each(function( studentId, i ){
+                student = students.get( studentId )
+                student.removeSeminar( data.seminar );
+            });
+
             data.seminar.destroy();
             vent.trigger( "seminar:cancel" );
         });
