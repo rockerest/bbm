@@ -8,18 +8,20 @@
             <thead>
                 <tr>
                     <th>Seminar Title</th>
+                    <th>Enrollment</th>
                 </tr>
             </thead>
             <tfoot>
             </tfoot>
             <tbody>
                 <%
-                    seminars.each( function( c, x ){
-                        %>
-                        <tr data-id="<%= c.get( "id" ) %>">
-                            <td><%= c.get( "name" ) %></td>
+                    seminars.each( function( seminar, x ){
+                    %>
+                        <tr data-id="<%= seminar.get( "id" ) %>">
+                            <td><%= seminar.get( "name" ) %></td>
+                            <td><%= seminar.get( "students" ).length || 0 %></td>
                         </tr>
-                        <%
+                    <%
                     });
                 %>
             </tbody>

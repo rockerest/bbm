@@ -1,15 +1,51 @@
 <section>
     <div>
-        <label for="name">Student Name</label>
-        <input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Enter the student's name"
-            value="<%= student.get( "name" ) %>"
-        ></input>
         <button class="<%= go[1] %>"><%= go[0] %></button>
         <button class="delete">Delete</button>
         <button class="cancel">Cancel</button>
+        <form>
+            <label for="name">Student Name</label>
+            <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Enter the student's name"
+                value="<%= student.get( "name" ) %>"
+            />
+        </form>
+        <% if( action === "edit" ){ %>
+        <h2>Enrolled in Seminars</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Seminar Name</th>
+                    <th>Seminar Enrollment</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td>
+                        <input type="text" name="seminar" id="seminar" placeholder="Type a seminar name" value="" />
+                    </td>
+                    <td>
+                        <button class="enroll">Enroll <%= student.get( "name" ) %></button>
+                    </td>
+                </tr>
+            </tfoot>
+            <tbody>
+                <%
+                    _( student.get( "seminars" ) ).each( function( id, i ){
+                        var seminar = seminars.findWhere({"id": id});
+                    %>
+                        <tr>
+                            <td><%= seminar.get( "name" ) %></td>
+                            <td><%= seminar.get( "students" ).length || 0 %></td>
+                        </tr>
+                    <%
+                    });
+                %>
+            </tbody>
+        </table>
+        <% } %>
     </div>
 </section>

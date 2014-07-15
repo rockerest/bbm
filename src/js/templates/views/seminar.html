@@ -1,16 +1,43 @@
 <section>
     <div>
-        <label for="name">Seminar Name</label>
-        <input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Enter a name for the seminar"
-            value="<%= seminar.get( "name" ) %>"
-        ></input>
         <button class="<%= go[1] %>"><%= go[0] %></button>
         <button class="delete">Delete</button>
         <button class="cancel">Cancel</button>
+        <form>
+            <label for="name">Seminar Name</label>
+            <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Enter a name for the seminar"
+                value="<%= seminar.get( "name" ) %>"
+            />
+        </form>
+        <% if( action === "edit" ){ %>
+        <h2>Enrolled Students</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Enrolled in Seminars</th>
+                </tr>
+            </thead>
+            <tfoot>
+            </tfoot>
+            <tbody>
+                <%
+                    _( enrolledStudents ).each(function( student, i ){
+                    %>
+                        <tr>
+                            <td><%= student.get( "name" ) %></td>
+                            <td><%= student.get( "seminars" ).length || 0 %></td>
+                        </tr>
+                    <%
+                    });
+                %>
+            </tbody>
+        </table>
+        <% } %>
     </div>
 </section>
 
