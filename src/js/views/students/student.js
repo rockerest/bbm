@@ -3,7 +3,7 @@ define(
         // Libraries
         "backbone", "underscore",
         // Dependencies
-        "text!templates/views/student.html", "collections/students", "collections/seminars", "events/students"
+        "text!vw/students/student.html", "collections/students", "collections/seminars", "events/students"
     ],
 
     function( Backbone, _, StudentTmpl, Students, Seminars, vent ){

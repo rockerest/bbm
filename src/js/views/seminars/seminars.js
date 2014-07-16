@@ -3,7 +3,7 @@ define(
         // Libraries
         "backbone", "underscore",
         // Dependencies
-        "text!templates/views/seminars.html", "collections/seminars", "events/seminars"
+        "text!vw/seminars/seminars.html", "collections/seminars", "events/seminars"
     ],
 
     function( Backbone, _, SeminarsTmpl, Seminars, vent ){
@@ -12,7 +12,9 @@ define(
                 "template": _.template( SeminarsTmpl ),
 
                 "events": {
-                    "click button": function(){ vent.trigger( "add:seminar" ); },
+                    "click button": function(){
+                        vent.trigger( "add:seminar" );
+                    },
                     "click tr": function( e ){
                         vent.trigger( "edit:seminar", {"id": this.$( e.currentTarget ).data( "id" )} );
                     }

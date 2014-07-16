@@ -3,7 +3,7 @@ define(
         // Libraries
         "backbone", "underscore",
         // Dependencies
-        "text!templates/views/home.html"
+        "text!vw/main/home.html"
     ],
     function( Backbone, _, HomeTmpl ){
         var Bbm = Backbone.View.extend({
