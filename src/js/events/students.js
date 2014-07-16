@@ -42,7 +42,7 @@ define(
 
                     return name.toLowerCase().indexOf( val.toLowerCase() ) > -1;
                 }),
-                first, val;
+                first;
 
             if( matches.length && val !== "" ){
                 first = matches[0];
@@ -71,7 +71,7 @@ define(
 
             seminars.fetch();
             _( data.student.get( "seminars" ) ).each(function( seminarId, i ){
-                seminar = seminars.get( seminarId )
+                seminar = seminars.get( seminarId );
                 seminar.removeStudent( data.student );
             });
             data.student.destroy();

@@ -1,11 +1,11 @@
 define(
-    ["backbone", "layouts/scheleton", "views/pages/seminars", "views/pages/seminar"],
+    ["backbone", "layouts/scheleton", "views/seminars/seminars", "views/seminars/seminar"],
     function( Backbone, ScheletonLayout, SeminarsView, SeminarView ){
         var mod = {},
             SeminarRouter = Backbone.Router.extend();
 
         mod.register = function(){
-            var rtr = new SeminarRouter;
+            var rtr = new SeminarRouter();
 
             rtr.route( "seminars",                      "seminars"      );
             rtr.route( /seminar\/(\w+)$/,               "do"            );
@@ -56,7 +56,7 @@ define(
                         }
                     });
             });
-        }
+        };
 
         return mod;
     }

@@ -1,5 +1,5 @@
 define(
-    ["backbone", "layouts/scheleton", "views/pages/home"],
+    ["backbone", "layouts/scheleton", "views/main/home"],
     function( Backbone, ScheletonLayout, HomeView ){
         var mod = {},
             ScheletonRouter = Backbone.Router.extend({
@@ -9,7 +9,7 @@ define(
             });
 
         mod.register = function(){
-            var rtr = new ScheletonRouter;
+            var rtr = new ScheletonRouter();
 
             rtr.on('route:home', function(){
                 var layout = new ScheletonLayout({"main": HomeView});
@@ -18,7 +18,7 @@ define(
                     .setup()
                     .render();
             });
-        }
+        };
 
         return mod;
     }

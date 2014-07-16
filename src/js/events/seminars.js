@@ -50,7 +50,7 @@ define(
 
             students.fetch();
             _( data.seminar.get( "students" ) ).each(function( studentId, i ){
-                student = students.get( studentId )
+                student = students.get( studentId );
                 student.removeSeminar( data.seminar );
             });
 

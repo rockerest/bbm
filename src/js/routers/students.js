@@ -1,11 +1,11 @@
 define(
-    ["backbone", "layouts/scheleton", "views/pages/students", "views/pages/student"],
+    ["backbone", "layouts/scheleton", "views/students/students", "views/students/student"],
     function( Backbone, ScheletonLayout, StudentsView, StudentView ){
         var mod = {},
             StudentRouter = Backbone.Router.extend();
 
         mod.register = function(){
-            var rtr = new StudentRouter;
+            var rtr = new StudentRouter();
 
             rtr.route( "students",                      "students"      );
             rtr.route( /student\/(\w+)$/,               "do"            );
@@ -56,7 +56,7 @@ define(
                         }
                     });
             });
-        }
+        };
 
         return mod;
     }
