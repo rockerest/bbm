@@ -1,5 +1,5 @@
 define(
-    ["backbone", "underscore", "text!templates/views/navigation.html"],
+    ["backbone", "underscore", "text!vw/chrome/navigation.html"],
     function( Backbone, _, NavTmpl ){
         var Bbm = Backbone.View.extend({
             "el": "body > header > nav",
