@@ -28,10 +28,50 @@ module.exports = function( grunt ){
                 }
             }
         },
+        "jshint":{
+            "main": {
+                "src": ["src/js/**/*.js"],
+            }
+        },
+        "requirejs":{
+            "compile":{
+                "options":{
+                    "baseUrl": "src/js/",
+                    "paths": {
+                        // SHORTCUTS
+                        "vw":                 "templates/views",
+
+                        // LIBRARIES
+                        "backbone":             "../../vendor/backbone/backbone",
+                        "underscore":           "../../vendor/underscore/underscore",
+                        "jquery":               "empty:",
+
+                        // LIBRARY PLUGINS
+                        "text":                 "../../vendor/requirejs-text/text",
+                        "localstorage":         "../../vendor/backbone.localstorage/backbone.localStorage"
+                    },
+                    "shim": {
+                        "backbone": {
+                            "exports": "Backbone"
+                        },
+                        "underscore": {
+                            "exports": "_"
+                        }
+                    },
+                    "stubModules": ['text'],
+                    "name": "bootstrap",
+                    "out": "build/js/scheleton.js"
+                }
+            }
+        },
         "watch": {
             "sass": {
                 "files": ['src/sass/**/*.scss'],
                 "tasks": ['sass:dev']
+            },
+            "js": {
+                "files": ['src/js/**/*.js', 'src/js/**/*.html'],
+                "tasks": ['jshint:main', 'requirejs:compile']
             }
         }
     });
@@ -39,6 +79,8 @@ module.exports = function( grunt ){
     // contrib tasks
     grunt.loadNpmTasks( 'grunt-contrib-sass' );
     grunt.loadNpmTasks( 'grunt-contrib-watch' );
+    grunt.loadNpmTasks( 'grunt-contrib-requirejs' );
+    grunt.loadNpmTasks( 'grunt-contrib-jshint' );
 
     // Non-contrib tasks
     grunt.loadNpmTasks( 'grunt-bower-task' );
@@ -54,6 +96,20 @@ module.exports = function( grunt ){
         grunt.file.mkdir( "./vendor" );
     });
 
+    grunt.registerTask( 'style', 'Compile the SASS', function(){
+        grunt.task.run(['sass:dev']);
+    });
+
+    grunt.registerTask( 'code', 'Compile the code', function(){
+        grunt.task.run(['jshint:main', 'requirejs:compile']);
+    });
+
+    grunt.registerTask( 'build', 'Do a system build', function(){
+        grunt.task.run(['style', 'code']);
+    });
+
+
+
     grunt.registerTask( 'setup', ['prepare', 'bower:install'] );
-    grunt.registerTask( 'default', ['sass:dev', 'watch:sass'] );
+    grunt.registerTask( 'default', ['build', 'watch'] );
 };
