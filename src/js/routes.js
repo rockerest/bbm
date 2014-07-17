@@ -1,57 +1,37 @@
 define(
     [
         // Libraries
-        "require", "backbone", "underscore",
+        "sammy", "underscore",
         // Routers
-        "routers/scheleton", "routers/seminars", "routers/students", "routers/errors",
-        // Error Handlers
-        "layouts/scheleton", "views/error/default"
+        "routers/scheleton", "routers/seminars", "routers/students"
     ],
     function(
-        require, Backbone, _,
-        ScheletonRouter, SeminarsRouter, StudentsRouter, ErrorRouter,
-        ScheletonLayout, ErrorView
+        Sammy, _,
+        ScheletonRouter, SeminarsRouter, StudentsRouter
     ){
         var Routes = {},
-
-            // HACK IN 404 HANDLER
-            History = Backbone.History.extend({
-                loadUrl: function(){
-                    var match = Backbone.History.prototype.loadUrl.apply(this, arguments);
-
-                    if( !match ){
-                        this.trigger('route-not-found', {"args": arguments});
-                    }
-
-                    return match;
-                }
-            });
-
-        Backbone.history = new History();
-
-        Backbone.history.on( "route-not-found", function( args ){
-            console.log( args );
-        });
+            scheleton = new Sammy();
 
         Routes.startup = function(){
             var routers = [
                     ScheletonRouter,
                     SeminarsRouter,
-                    StudentsRouter,
-                    ErrorRouter
+                    StudentsRouter
                 ],
                 count = 0;
 
             _( routers ).each( function( r, i ){
                 ++count;
-                r.register();
+                r.register( scheleton );
 
                 if( count === routers.length ){
-                    Backbone.history.start({
-                        "hashChange": false
-                    });
+                    scheleton.run( "#/" );
                 }
             });
+        };
+
+        Routes.navigate = function( path ){
+            location.href = path;
         };
 
         return Routes;

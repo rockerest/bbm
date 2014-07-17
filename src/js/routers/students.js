@@ -1,18 +1,10 @@
 define(
-    ["backbone", "layouts/scheleton", "views/students/students", "views/students/student"],
-    function( Backbone, ScheletonLayout, StudentsView, StudentView ){
-        var mod = {},
-            StudentRouter = Backbone.Router.extend();
+    ["layouts/scheleton", "views/students/students", "views/students/student"],
+    function( ScheletonLayout, StudentsView, StudentView ){
+        var mod = {};
 
-        mod.register = function(){
-            var rtr = new StudentRouter();
-
-            rtr.route( "students",                      "students"      );
-            rtr.route( /student\/(\w+)$/,               "do"            );
-            rtr.route( /student\/(\d+)$/,               "viewStudent"   );
-            rtr.route( /student\/(\w+)\/([\d\w\-]+)$/,  "modifyStudent" );
-
-            rtr.on('route:students', function(){
+        mod.register = function( rtr ){
+            rtr.get( /students/, function(){
                 var layout = new ScheletonLayout({"main": StudentsView});
 
                 layout
@@ -20,39 +12,39 @@ define(
                     .render();
             });
 
-            rtr.on( 'route:viewStudent', function( id ){
+            rtr.get( /\/student\/(\d+)(:?\/)?$/, function(){
                 var layout = new ScheletonLayout({"main": StudentView});
 
                 layout
                     .setup()
                     .render({
                         "main": {
-                            "id": id
+                            "id": this.params.splat[0]
                         }
                     });
             });
 
-            rtr.on( 'route:do', function( action ){
+            rtr.get( /\/student\/(\w+)$/, function(){
                 var layout = new ScheletonLayout({"main": StudentView});
 
                 layout
                     .setup()
                     .render({
                         "main": {
-                            "action": action
+                            "action": this.params.splat[0]
                         }
                     });
             });
 
-            rtr.on( 'route:modifyStudent', function( action, id ){
+            rtr.get( /student\/(\w+)\/([\d\w\-]+)(:?\/)?$/, function(){
                 var layout = new ScheletonLayout({"main": StudentView});
 
                 layout
                     .setup()
                     .render({
                         "main": {
-                            "action": action,
-                            "id": id
+                            "action": this.params.splat[0],
+                            "id": this.params.splat[1]
                         }
                     });
             });

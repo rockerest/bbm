@@ -1,17 +1,10 @@
 define(
     ["backbone", "layouts/scheleton", "views/main/home"],
     function( Backbone, ScheletonLayout, HomeView ){
-        var mod = {},
-            ScheletonRouter = Backbone.Router.extend({
-                routes: {
-                    "(/)": "home"
-                }
-            });
+        var mod = {};
 
-        mod.register = function(){
-            var rtr = new ScheletonRouter();
-
-            rtr.on('route:home', function(){
+        mod.register = function( rtr ){
+            rtr.get( /^\/$|^#$|^#\/$|^\/#\/$/, function(){
                 var layout = new ScheletonLayout({"main": HomeView});
 
                 layout

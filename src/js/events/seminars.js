@@ -8,16 +8,14 @@ define(
     function( Backbone, _, Students ){
         var vent = window.bbm.channels.seminars || _.extend( {}, Backbone.Events ),
             students = new Students(),
-        	rtr = Backbone.Router.extend(),
-        	workspace = new rtr(),
             ENTER_KEY_CODE = 13;
 
         vent.on( "seminar:cancel", function(){
-        	workspace.navigate( "#/seminars", {"trigger": true} );
+        	location.href = "#/seminars";
         });
 
         vent.on( "add:seminar", function(){
-            workspace.navigate( "#/seminar/new", {"trigger": true} );
+            location.href = "#/seminar/new";
         });
 
         vent.on( "add:seminar:name", function( data ){
@@ -37,7 +35,7 @@ define(
         });
 
         vent.on( "edit:seminar", function( data ){
-            workspace.navigate( "#/seminar/edit/" + data.id, {"trigger": true} );
+            location.href = "#/seminar/edit/" + data.id;
         });
 
         vent.on( "edit:seminar:save", function( data ){

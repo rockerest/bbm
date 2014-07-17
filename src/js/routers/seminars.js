@@ -1,18 +1,10 @@
 define(
-    ["backbone", "layouts/scheleton", "views/seminars/seminars", "views/seminars/seminar"],
-    function( Backbone, ScheletonLayout, SeminarsView, SeminarView ){
-        var mod = {},
-            SeminarRouter = Backbone.Router.extend();
+    ["layouts/scheleton", "views/seminars/seminars", "views/seminars/seminar"],
+    function( ScheletonLayout, SeminarsView, SeminarView ){
+        var mod = {};
 
-        mod.register = function(){
-            var rtr = new SeminarRouter();
-
-            rtr.route( "seminars",                      "seminars"      );
-            rtr.route( /seminar\/(\w+)$/,               "do"            );
-            rtr.route( /seminar\/(\d+)$/,               "viewSeminar"   );
-            rtr.route( /seminar\/(\w+)\/([\d\w\-]+)$/,  "modifySeminar" );
-
-            rtr.on('route:seminars', function(){
+        mod.register = function( rtr ){
+            rtr.get( /\/seminars(\/)?/, function(){
                 var layout = new ScheletonLayout({"main": SeminarsView});
 
                 layout
@@ -20,39 +12,39 @@ define(
                     .render();
             });
 
-            rtr.on( 'route:viewSeminar', function( id ){
+            rtr.get( /\/seminar\/(\d+)(:?\/)?$/, function(){
                 var layout = new ScheletonLayout({"main": SeminarView});
 
                 layout
                     .setup()
                     .render({
                         "main": {
-                            "id": id
+                            "id": this.params.splat[0]
                         }
                     });
             });
 
-            rtr.on( 'route:do', function( action ){
+            rtr.get( /\/seminar\/(\w+)$/, function(){
                 var layout = new ScheletonLayout({"main": SeminarView});
 
                 layout
                     .setup()
                     .render({
                         "main": {
-                            "action": action
+                            "action": this.params.splat[0]
                         }
                     });
             });
 
-            rtr.on( 'route:modifySeminar', function( action, id ){
+            rtr.get( /seminar\/(\w+)\/([\d\w\-]+)(:?\/)?$/, function(){
                 var layout = new ScheletonLayout({"main": SeminarView});
 
                 layout
                     .setup()
                     .render({
                         "main": {
-                            "action": action,
-                            "id": id
+                            "action": this.params.splat[0] || "",
+                            "id": this.params.splat[1] || ""
                         }
                     });
             });
