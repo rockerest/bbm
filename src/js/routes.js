@@ -3,11 +3,14 @@ define(
         // Libraries
         "sammy", "underscore",
         // Routers
-        "routers/scheleton", "routers/seminars", "routers/students"
+        "routers/scheleton", "routers/seminars", "routers/students",
+        // Error Router
+        "routers/errors"
     ],
     function(
         Sammy, _,
-        ScheletonRouter, SeminarsRouter, StudentsRouter
+        ScheletonRouter, SeminarsRouter, StudentsRouter,
+        ErrorRouter
     ){
         var Routes = {},
             scheleton = new Sammy();
@@ -16,7 +19,8 @@ define(
             var routers = [
                     ScheletonRouter,
                     SeminarsRouter,
-                    StudentsRouter
+                    StudentsRouter,
+                    ErrorRouter
                 ],
                 count = 0;
 
