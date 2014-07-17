@@ -7,6 +7,7 @@ requirejs.config({
         // LIBRARIES
         "backbone":             "../../vendor/backbone/backbone",
         "underscore":           "../../vendor/underscore/underscore",
+        "sammy":                "../../vendor/sammy/lib/min/sammy-latest.min",
         "jquery":               ["//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery", "../../vendor/jquery/jquery"],
 
         // LIBRARY PLUGINS

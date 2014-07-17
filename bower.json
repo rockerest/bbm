@@ -22,7 +22,9 @@
     "font-awesome": "~4.1.0",
     "requirejs-text": "~2.0.12",
     "backbone": "~1.1.2",
-    "backbone.localstorage": "~1.1.9"
+    "backbone.localstorage": "~1.1.9",
+    "sammy": "~0.*"
+
   },
   "exportsOverride": {
     "font-awesome": {

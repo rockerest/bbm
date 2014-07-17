@@ -1,5 +1,13 @@
 module.exports = function( grunt ){
     grunt.initConfig({
+        "notify": {
+            'requirejs': {
+                "options": {
+                    "title": 'Build Succeeded',
+                    "message": 'RequireJS has finished compiling',
+                }
+            }
+        },
         "bower": {
             "install":{
                 "options":{
@@ -44,6 +52,7 @@ module.exports = function( grunt ){
                         // LIBRARIES
                         "backbone":             "../../vendor/backbone/backbone",
                         "underscore":           "../../vendor/underscore/underscore",
+                        "sammy":                "../../vendor/sammy/lib/min/sammy-latest.min",
                         "jquery":               "empty:",
 
                         // LIBRARY PLUGINS
@@ -71,7 +80,7 @@ module.exports = function( grunt ){
             },
             "js": {
                 "files": ['src/js/**/*.js', 'src/js/**/*.html'],
-                "tasks": ['jshint:main', 'requirejs:compile']
+                "tasks": ['code']
             }
         }
     });
@@ -84,6 +93,7 @@ module.exports = function( grunt ){
 
     // Non-contrib tasks
     grunt.loadNpmTasks( 'grunt-bower-task' );
+    grunt.loadNpmTasks( 'grunt-notify' );
 
     // Custom tasks
     grunt.registerTask( 'clean', "Wipe the build directory", function(){
@@ -101,7 +111,7 @@ module.exports = function( grunt ){
     });
 
     grunt.registerTask( 'code', 'Compile the code', function(){
-        grunt.task.run(['jshint:main', 'requirejs:compile']);
+        grunt.task.run(['jshint:main', 'requirejs:compile', 'notify:requirejs']);
     });
 
     grunt.registerTask( 'build', 'Do a system build', function(){
