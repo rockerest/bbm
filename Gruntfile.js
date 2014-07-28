@@ -68,6 +68,9 @@ module.exports = function( grunt ){
                         }
                     },
                     "stubModules": ['text'],
+                    "optimize": "uglify2",
+                    "generateSourceMaps": true,
+                    "preserveLicenseComments": false,
                     "name": "bootstrap",
                     "out": "build/js/scheleton.js"
                 }
