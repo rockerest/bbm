@@ -6,7 +6,7 @@ define(
         "collections/seminars"
     ],
     function( Backbone, _, $, Seminars ){
-        var vent = window.bbm.channels.students || _.extend( {}, Backbone.Events ),
+        var vent = window.scheleton.channels.students || _.extend( {}, Backbone.Events ),
             seminars = new Seminars(),
             ENTER_KEY_CODE = 13;
 
@@ -87,12 +87,12 @@ define(
                     seminar.enrollStudent( data.student );
                     data.student.addSeminar( seminar );
                 }
-
-                vent.trigger( "edit:student", {"id": data.student.get( "id" )} );
             }
+
+            data.student.save();
         });
 
-        window.bbm.channels.students = vent;
+        window.scheleton.channels.students = vent;
         return vent;
     }
 );

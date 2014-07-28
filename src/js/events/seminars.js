@@ -6,7 +6,7 @@ define(
         "collections/students"
     ],
     function( Backbone, _, Students ){
-        var vent = window.bbm.channels.seminars || _.extend( {}, Backbone.Events ),
+        var vent = window.scheleton.channels.seminars || _.extend( {}, Backbone.Events ),
             students = new Students(),
             ENTER_KEY_CODE = 13;
 
@@ -56,7 +56,7 @@ define(
             vent.trigger( "seminar:cancel" );
         });
 
-        window.bbm.channels.seminars = vent;
+        window.scheleton.channels.seminars = vent;
         return vent;
     }
 );

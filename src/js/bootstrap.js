@@ -24,7 +24,7 @@ requirejs.config({
     }
 });
 
-window.bbm = {
+window.scheleton = {
     "channels": {}
 };
 

@@ -7,12 +7,12 @@ define(
 				"main":			"#application"
 			};
 
-			this.views = {
+			this.parts = {
 				"navigation":	NavView
 			};
 
 			if( regions && regions instanceof Object ){
-				this.assignRegions( regions );
+				this.assignParts( regions );
 			}
 		};
 
@@ -24,13 +24,6 @@ define(
 			this.template	= _.template( LytTemplate );
 
 			return this;
-		};
-
-		ScheletonLayout.prototype.render = function( data ){
-			var layout = this.build();
-
-			new layout();
-			this.renderRegions( data );
 		};
 
 		return ScheletonLayout;

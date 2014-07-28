@@ -6,7 +6,7 @@ define(
         "text!vw/errors/default.html"
     ],
     function( Backbone, _, DefaultTmpl ){
-        var Bbm = Backbone.View.extend({
+        var DefaultErrorView = Backbone.View.extend({
             "el": "#main",
             "template": _.template( DefaultTmpl ),
 
@@ -22,6 +22,6 @@ define(
             }
         });
 
-        return Bbm;
+        return DefaultErrorView;
     }
 );

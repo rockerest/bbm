@@ -6,7 +6,7 @@ define(
         "text!vw/main/home.html"
     ],
     function( Backbone, _, HomeTmpl ){
-        var Bbm = Backbone.View.extend({
+        var MainHomeView = Backbone.View.extend({
             "el": "#main",
             "template": _.template( HomeTmpl ),
 
@@ -20,6 +20,6 @@ define(
             }
         });
 
-        return Bbm;
+        return MainHomeView;
     }
 );
