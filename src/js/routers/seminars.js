@@ -7,46 +7,44 @@ define(
             rtr.get( /\/seminars(\/)?/, function(){
                 var layout = new ScheletonLayout({"main": SeminarsView});
 
-                layout
-                    .setup()
-                    .render();
+                new (layout.build())();
             });
 
             rtr.get( /\/seminar\/(\d+)(:?\/)?$/, function(){
                 var layout = new ScheletonLayout({"main": SeminarView});
 
-                layout
-                    .setup()
-                    .render({
+                new (layout.build({
+                    "construct": {
                         "main": {
                             "id": this.params.splat[0]
                         }
-                    });
+                    }
+                }))();
             });
 
             rtr.get( /\/seminar\/(\w+)$/, function(){
                 var layout = new ScheletonLayout({"main": SeminarView});
 
-                layout
-                    .setup()
-                    .render({
+                new (layout.build({
+                    "construct": {
                         "main": {
                             "action": this.params.splat[0]
                         }
-                    });
+                    }
+                }))();
             });
 
             rtr.get( /seminar\/(\w+)\/([\d\w\-]+)(:?\/)?$/, function(){
                 var layout = new ScheletonLayout({"main": SeminarView});
 
-                layout
-                    .setup()
-                    .render({
+                new (layout.build({
+                    "construct": {
                         "main": {
                             "action": this.params.splat[0] || "",
                             "id": this.params.splat[1] || ""
                         }
-                    });
+                    }
+                }))();
             });
         };
 
