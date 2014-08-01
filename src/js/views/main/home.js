@@ -7,7 +7,6 @@ define(
     ],
     function( Backbone, _, HomeTmpl ){
         var MainHomeView = Backbone.View.extend({
-            "el": "#content",
             "template": _.template( HomeTmpl ),
 
             "render": function(){
