@@ -26,22 +26,32 @@ define(
             var self = this;
 
             return Backbone.View.extend({
-                "el": this.output,
-                "template": this.template,
+                "el": self.output,
+                "template": self.template,
 
                 "render": function(){
-                    var current, construct, pass;
+                    var isLayout, current, construct, pass, el;
 
                     this.$el.html( this.template( data.render ) );
 
                     _( self.parts ).each( function( part, name ){
+                        el = {
+                            "el": self.regions[ name ]
+                        };
+
+                        isLayout = part.prototype instanceof Layout;
+
                         construct = data.construct[ name ] ? data.construct[ name ] : {};
                         pass = data.sub[ name ] ? data.sub[ name ] : {};
 
+                        if( !isLayout ){
+                            construct = _.extend( {}, el, construct );
+                        }
+
                         current = new part( construct );
 
-                        if( _( current ).has( "build" ) ){
-                            new (current.build( pass ))();
+                        if( isLayout ){
+                            current.render( pass );
                         }
                     });
 
@@ -52,6 +62,10 @@ define(
                     this.render();
                 }
             });
+        };
+
+        Layout.prototype.render = function( data ){
+            return new (this.build( data ))();
         };
 
         return Layout;
