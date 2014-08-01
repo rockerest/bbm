@@ -12,7 +12,7 @@ define(
 
 			_.extend( this.regions, {
 				"navigation":	"nav",
-				"main":			"#application"
+				"main":			"#main"
 			});
 
 			_.extend( this.parts, {
