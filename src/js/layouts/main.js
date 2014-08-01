@@ -6,8 +6,12 @@ define(
         "utilities",
         // Dependencies
         "bases/layout", "text!templates/layouts/main.html", "views/chrome/sidebar"],
-    function( Backbone, _, Utilities, Layout, LytTemplate, SidebarView ){
-        var ScheletonLayout = function( data ){
+    function(
+        Backbone, _,
+        Utilities,
+        Layout, LytTemplate, SidebarView
+    ){
+        var MainLayout = function( data ){
             Layout.call( this, data );
 
             _.extend( this.regions, {
@@ -19,12 +23,12 @@ define(
                 "sidebar":   SidebarView
             });
 
-            this.output = "#application";
+            this.output = "#main";
             this.template = _.template( LytTemplate );
         };
 
-        Utilities.extend( Layout, ScheletonLayout );
+        Utilities.extend( Layout, MainLayout );
 
-        return ScheletonLayout;
+        return MainLayout;
     }
 );
