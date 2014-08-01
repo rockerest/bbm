@@ -16,13 +16,13 @@ define(
                 var layout = new ScheletonLayout({ "main": MainLayout }),
                     structure;
 
-                new (layout.build({
+                layout.render({
                     "construct": {
                         "main": {
                             "content": HomeView
                         }
                     }
-                }))();
+                });
             });
         };
 
