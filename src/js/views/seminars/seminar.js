@@ -8,7 +8,6 @@ define(
 
     function( Backbone, _, SeminarTmpl, Seminars, Students, vent ){
         var SeminarsView = Backbone.View.extend({
-                "el": "#main",
                 "template": _.template( SeminarTmpl ),
 
                 "events": {

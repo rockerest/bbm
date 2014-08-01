@@ -5,48 +5,79 @@ define(
 
         mod.register = function( rtr ){
             rtr.get( /students/, function(){
-                var layout = new ScheletonLayout({"main": StudentsView});
+                var layout = new ScheletonLayout({"main": MainLayout});
 
-                layout
-                    .setup()
-                    .render();
+                layout.render({
+                    "construct": {
+                        "main": {
+                            "content": StudentsView
+                        }
+                    }
+                });
             });
 
             rtr.get( /\/student\/(\d+)(:?\/)?$/, function(){
-                var layout = new ScheletonLayout({"main": StudentView});
+                var layout = new ScheletonLayout({"main": MainLayout});
 
-                layout
-                    .setup()
-                    .render({
+                layout.render({
+                    "construct": {
                         "main": {
-                            "id": this.params.splat[0]
+                            "content": StudentView
                         }
-                    });
+                    },
+                    "sub": {
+                        "main": {
+                            "construct": {
+                                "content": {
+                                    "id": this.params.splat[0]
+                                }
+                            }
+                        }
+                    }
+                });
             });
 
             rtr.get( /\/student\/(\w+)$/, function(){
-                var layout = new ScheletonLayout({"main": StudentView});
+                var layout = new ScheletonLayout({"main": MainLayout});
 
-                layout
-                    .setup()
-                    .render({
+                layout.render({
+                    "construct": {
                         "main": {
-                            "action": this.params.splat[0]
+                            "content": StudentView
                         }
-                    });
+                    },
+                    "sub": {
+                        "main": {
+                            "construct": {
+                                "content": {
+                                    "action": this.params.splat[0]
+                                }
+                            }
+                        }
+                    }
+                });
             });
 
             rtr.get( /student\/(\w+)\/([\d\w\-]+)(:?\/)?$/, function(){
-                var layout = new ScheletonLayout({"main": StudentView});
+                var layout = new ScheletonLayout({"main": MainLayout});
 
-                layout
-                    .setup()
-                    .render({
+                layout.render({
+                    "construct": {
                         "main": {
-                            "action": this.params.splat[0],
-                            "id": this.params.splat[1]
+                            "content": StudentView
                         }
-                    });
+                    },
+                    "sub": {
+                        "main": {
+                            "construct": {
+                                "content": {
+                                    "action": this.params.splat[0],
+                                    "id": this.params.splat[1]
+                                }
+                            }
+                        }
+                    }
+                });
             });
         };
 

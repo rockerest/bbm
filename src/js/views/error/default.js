@@ -7,7 +7,6 @@ define(
     ],
     function( Backbone, _, DefaultTmpl ){
         var DefaultErrorView = Backbone.View.extend({
-            "el": "#main",
             "template": _.template( DefaultTmpl ),
 
             "render": function(){

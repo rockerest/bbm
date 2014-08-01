@@ -1,5 +1,9 @@
 define(
-    ["backbone", "layouts/scheleton", "layouts/main", "views/main/home"],
+    [
+        // Libraries
+        "backbone",
+        // Dependencies
+        "layouts/scheleton", "layouts/main", "views/main/home"],
     function( Backbone, ScheletonLayout, MainLayout, HomeView ){
         var mod = {};
 
@@ -9,18 +13,16 @@ define(
             };
 
             rtr.get( /^\/$|^#$|^#\/$|^\/#\/$/, function(){
-                var layout = new ScheletonLayout({
-                        "main": [
-                            MainLayout,
-                            {
-                                "body": HomeView
-                            }
-                        ]
-                    });
+                var layout = new ScheletonLayout({ "main": MainLayout }),
+                    structure;
 
-                layout
-                    .setup()
-                    .render();
+                layout.render({
+                    "construct": {
+                        "main": {
+                            "content": HomeView
+                        }
+                    }
+                });
             });
         };
 

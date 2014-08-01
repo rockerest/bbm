@@ -1,8 +1,8 @@
 define(
-    ["backbone", "underscore", "text!vw/chrome/navigation.html"],
-    function( Backbone, _, NavTmpl ){
-        var NavigationView = Backbone.View.extend({
-            "template": _.template( NavTmpl ),
+    ["backbone", "underscore", "text!vw/chrome/sidebar.html"],
+    function( Backbone, _, SidebarTmpl ){
+        var SidebarView = Backbone.View.extend({
+            "template": _.template( SidebarTmpl ),
 
             "render": function(){
                 this.$el.html( this.template() );
@@ -14,6 +14,6 @@ define(
             }
         });
 
-        return NavigationView;
+        return SidebarView;
     }
 );
