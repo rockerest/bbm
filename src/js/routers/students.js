@@ -1,6 +1,6 @@
 define(
-    ["layouts/scheleton", "views/students/students", "views/students/student"],
-    function( ScheletonLayout, StudentsView, StudentView ){
+    ["layouts/scheleton", "layouts/main", "views/students/students", "views/students/student"],
+    function( ScheletonLayout, MainLayout, StudentsView, StudentView ){
         var mod = {};
 
         mod.register = function( rtr ){
