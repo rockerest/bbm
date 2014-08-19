@@ -1,4 +1,4 @@
 scheleton
 ===
 
-Trying to figure out Backbone and RequireJS
+Trying to figure out Backbone
