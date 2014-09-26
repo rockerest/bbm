@@ -19,7 +19,7 @@ define(
             var def = {
                     "render": {},
                     "construct": {},
-                    "sub": {}
+                    "passdown": {}
                 };
 
             // If an output selector has been provided, use that as the output location
@@ -36,7 +36,7 @@ define(
                 "template": self.template,
 
                 "render": function(){
-                    var isLayout, current, construct, pass, el;
+                    var isLayout, current, construct, passdown, el;
 
                     // If any data should be rendered directly into this layout-view, do that here
                     this.$el.html( this.template( data.render ) );
@@ -54,7 +54,7 @@ define(
                         // collect the information to pass into the constructor
                         construct = data.construct[ name ] ? data.construct[ name ] : {};
                         // collect the information to pass through to the render function
-                        pass = data.sub[ name ] ? data.sub[ name ] : {};
+                        passdown = data.passdown[ name ] ? data.passdown[ name ] : {};
 
                         // If this part is not a layout, merge the object containing the correct element with the data for the constructor
                         if( !isLayout ){
@@ -66,7 +66,7 @@ define(
 
                         // if this current part IS a layout, call render on it and pass in the passthrough data
                         if( isLayout ){
-                            current.render( pass, el.el );
+                            current.render( passdown, el.el );
                         }
                     });
 

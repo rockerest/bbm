@@ -14,7 +14,7 @@ define(
                             "content": ErrorView
                         }
                     },
-                    "sub": {
+                    "passdown": {
                         "main": {
                             "construct": {
                                 "content": {

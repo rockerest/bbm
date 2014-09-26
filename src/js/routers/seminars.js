@@ -25,7 +25,7 @@ define(
                             "content": SeminarView
                         }
                     },
-                    "sub": {
+                    "passdown": {
                         "main": {
                             "construct": {
                                 "content": {
@@ -46,7 +46,7 @@ define(
                             "content": SeminarView
                         }
                     },
-                    "sub": {
+                    "passdown": {
                         "main": {
                             "construct": {
                                 "content": {
@@ -67,7 +67,7 @@ define(
                             "content": SeminarView
                         }
                     },
-                    "sub": {
+                    "passdown": {
                         "main": {
                             "construct": {
                                 "content": {
