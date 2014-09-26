@@ -23,7 +23,6 @@ define(
                 "sidebar":   SidebarView
             });
 
-            this.output = "#main";
             this.template = _.template( LytTemplate );
         };
 

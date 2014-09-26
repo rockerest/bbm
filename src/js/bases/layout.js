@@ -4,6 +4,7 @@ define(
         var Layout = function( parts ){
             this.regions = {};
             this.parts = {};
+            this.output = 'body';
 
             if( parts && parts instanceof Object ){
                 var self = this;
@@ -14,12 +15,17 @@ define(
             }
         };
 
-        Layout.prototype.build = function( data ){
+        Layout.prototype.build = function( data, optionalOutputSelector ){
             var def = {
                     "render": {},
                     "construct": {},
                     "sub": {}
                 };
+
+            // If an output selector has been provided, use that as the output location
+            if( optionalOutputSelector ){
+                this.output = optionalOutputSelector;
+            }
 
             data = _.extend( {}, def, data );
 
@@ -60,7 +66,7 @@ define(
 
                         // if this current part IS a layout, call render on it and pass in the passthrough data
                         if( isLayout ){
-                            current.render( pass );
+                            current.render( pass, el.el );
                         }
                     });
 
@@ -73,8 +79,8 @@ define(
             });
         };
 
-        Layout.prototype.render = function( data ){
-            return new (this.build( data ))();
+        Layout.prototype.render = function( data, optionalOutputSelector ){
+            return new (this.build( data, optionalOutputSelector ))();
         };
 
         return Layout;

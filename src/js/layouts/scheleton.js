@@ -19,7 +19,6 @@ define(
 				"navigation":	NavView
 			});
 
-			this.output = "body";
 			this.template = _.template( LytTemplate );
 		};
 
