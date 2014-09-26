@@ -20,15 +20,19 @@
                 <tr>
                     <th>Seminar Name</th>
                     <th>Seminar Enrollment</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
                     <td>
+                        Find new seminars
+                    </td>
+                    <td>
                         <input type="text" name="seminar" id="seminar" placeholder="Type a seminar name" value="" />
                     </td>
                     <td>
-                        <button class="enroll">Enroll <%= student.getName() %></button>
+                        <button class="enroll">Enroll</button>
                     </td>
                 </tr>
             </tfoot>
@@ -40,6 +44,9 @@
                         <tr>
                             <td><%= seminar.getName() %></td>
                             <td><%= seminar.getStudents().length || 0 %></td>
+                            <td>
+                                <button class="unenroll" data-seminar-id="<%= id %>">Un-enroll</button>
+                            </td>
                         </tr>
                     <%
                     });

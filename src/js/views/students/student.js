@@ -48,7 +48,15 @@ define(
                     "click button.enroll": function(){
                         vent.trigger( "edit:student:enroll", {
                             "id": this.$("input#seminar").data( "id" ),
-                            "student": this.student
+                            "student": this.student,
+                            "view": this
+                        });
+                    },
+                    "click button.unenroll": function( e ){
+                        vent.trigger( "edit:student:unenroll", {
+                            "id": this.$( e.target ).data( "seminar-id" ),
+                            "student": this.student,
+                            "view": this
                         });
                     }
                 },

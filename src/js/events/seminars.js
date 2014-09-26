@@ -30,7 +30,9 @@ define(
         });
 
         vent.on( "add:seminar:create", function( data ){
+            data.collection.add( data.seminar );
             data.seminar.save();
+
             vent.trigger( "seminar:cancel" );
         });
 
@@ -47,7 +49,7 @@ define(
             var student;
 
             students.fetch();
-            _( data.seminar.get( "students" ) ).each(function( studentId, i ){
+            _( data.seminar.getStudents() ).each(function( studentId, i ){
                 student = students.get( studentId );
                 student.removeSeminar( data.seminar );
             });
