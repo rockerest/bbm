@@ -76,20 +76,36 @@ define(
             vent.trigger( "student:cancel" );
         });
 
-        vent.on( "edit:student:enroll", function( data ){
+        vent.on( "edit:student:enroll", function( passedEventData ){
             var seminar;
 
-            if( data.id ){
+            if( passedEventData.id ){
                 seminars.fetch();
-                seminar = seminars.get( data.id );
+                seminar = seminars.get( passedEventData.id );
 
-                if( !seminar.isStudentEnrolled( data.student ) ){
-                    seminar.enrollStudent( data.student );
-                    data.student.addSeminar( seminar );
+                if( !seminar.isStudentEnrolled( passedEventData.student ) ){
+                    seminar.enrollStudent( passedEventData.student );
+                    passedEventData.student.addSeminar( seminar );
                 }
             }
 
-            data.student.save();
+            passedEventData.view.render();
+        });
+
+        vent.on( "edit:student:unenroll", function( passedEventData ){
+            var seminar;
+
+            if( passedEventData.id ){
+                seminars.fetch();
+                seminar = seminars.get( passedEventData.id );
+
+                if( seminar.isStudentEnrolled( passedEventData.student ) ){
+                    seminar.removeStudent( passedEventData.student );
+                    passedEventData.student.removeSeminar( seminar );
+                }
+            }
+
+            passedEventData.view.render();
         });
 
         window.scheleton.channels.students = vent;
