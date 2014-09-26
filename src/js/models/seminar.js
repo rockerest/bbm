@@ -5,9 +5,8 @@ define(
     ],
     function( Backbone, _ ){
         var SeminarModel = Backbone.Model.extend({
-                "urlRoot": "/seminar.php?p=",
                 "defaults": {
-                    "name": "Seminar 1",
+                    "name": "Seminar Testing",
                     "students": []
                 },
 

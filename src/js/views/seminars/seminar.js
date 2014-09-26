@@ -20,7 +20,8 @@ define(
                     },
                     "click button.create": function(){
                         vent.trigger( "add:seminar:create", {
-                            "seminar": this.seminar
+                            "seminar": this.seminar,
+                            "collection": new Seminars()
                         });
                     },
                     "click button.save": function(){
@@ -68,8 +69,7 @@ define(
                         this.seminar = seminars.get( data.id );
                     }
                     else{
-                        this.seminar = seminars.create();
-                        seminars.add( this.seminar );
+                        this.seminar = new seminars.model();
                     }
 
                     if( this.action == "edit" ){
