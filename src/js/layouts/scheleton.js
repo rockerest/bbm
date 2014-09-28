@@ -5,7 +5,7 @@ define(
 		// Helpers
 		"utilities",
 		// Dependencies
-		"bases/layout", "text!templates/layouts/scheleton.html", "views/chrome/navigation"],
+		"bases/layout", "text!lyt/scheleton.html", "views/chrome/navigation"],
 	function( Backbone, _, Utilities, Layout, LytTemplate, NavView ){
 		var ScheletonLayout = function( data ){
 			Layout.call( this, data );

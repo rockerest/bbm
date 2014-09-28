@@ -2,12 +2,13 @@ requirejs.config({
     "urlArgs": "_=" + (new Date()).getTime(),
     "paths": {
         // SHORTCUTS
-        "vw":                 "templates/views",
+        "vw":                   "../content/templates/views",
+        "lyt":                  "../content/templates/layouts",
 
         // LIBRARIES
         "backbone":             "../../vendor/backbone/backbone",
         "underscore":           "../../vendor/underscore/underscore",
-        "sammy":                "../../vendor/sammy/lib/min/sammy-latest.min",
+        "sammy":                "../../vendor/sammy/sammy",
         "jquery":               ["//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery", "../../vendor/jquery/jquery"],
 
         // LIBRARY PLUGINS

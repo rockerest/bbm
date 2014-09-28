@@ -47,12 +47,13 @@ module.exports = function( grunt ){
                     "baseUrl": "src/js/",
                     "paths": {
                         // SHORTCUTS
-                        "vw":                 "templates/views",
+                        "vw":                   "../content/templates/views",
+                        "lyt":                  "../content/templates/layouts",
 
                         // LIBRARIES
                         "backbone":             "../../vendor/backbone/backbone",
                         "underscore":           "../../vendor/underscore/underscore",
-                        "sammy":                "../../vendor/sammy/lib/min/sammy-latest.min",
+                        "sammy":                "../../vendor/sammy/sammy",
                         "jquery":               "empty:",
 
                         // LIBRARY PLUGINS

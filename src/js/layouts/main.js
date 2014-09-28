@@ -5,7 +5,7 @@ define(
         // Helpers
         "utilities",
         // Dependencies
-        "bases/layout", "text!templates/layouts/main.html", "views/chrome/sidebar"],
+        "bases/layout", "text!lyt/main.html", "views/chrome/sidebar"],
     function(
         Backbone, _,
         Utilities,
