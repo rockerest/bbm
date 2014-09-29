@@ -10,11 +10,13 @@ define(
             "template": _.template( HomeTmpl ),
 
             "render": function(){
+                console.log( this.$el );
                 this.$el.html( this.template() );
                 return this;
             },
 
             "initialize": function(){
+                console.log( "home rendering" );
                 this.render();
             }
         });
