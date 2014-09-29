@@ -19,6 +19,29 @@ define(
             });
         };
 
+        Utilities.prepareSettings = function( output, defaults, options ){
+            if( !options ){
+                options = {};
+            }
+
+            _.extend( output.regions, defaults.regions, options.regions );
+            _.defaults( output, defaults, options );
+
+            return output;
+        };
+
+        Utilities.warn = function( message ){
+            if( console && console.warn ){
+                console.warn( message );
+            }
+        };
+
+        Utilities.error = function( message ){
+            if( console && console.error ){
+                console.error( message );
+            }
+        };
+
         return Utilities;
     }
 );
