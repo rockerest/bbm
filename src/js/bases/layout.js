@@ -2,9 +2,10 @@ define(
     ["backbone", "underscore", "bases/region"],
     function( Backbone, _, Region ){
         var Layout = function( options ){
-            this.options = options;
-            this.regions = {};
-        };
+                this.options = options;
+                this.regions = {};
+            },
+            createRegions;
 
         Layout.prototype.render = function(){
             var self = this,
@@ -14,9 +15,7 @@ define(
 
                     "render": function(){
                         this.$el.html( this.template() );
-                        _( self.options.regions ).each( function( selector, name ){
-                            self.regions[ name ] = new Region( selector );
-                        });
+                        createRegions( self, self.options.regions, this.$el );
 
                         return this;
                     },
@@ -26,7 +25,14 @@ define(
                     }
                 });
 
+
             return new view();
+        };
+
+        createRegions = function( layout, regions, parent ){
+            _( regions ).each( function( selector, name ){
+                layout.regions[ name ] = new Region( parent, selector );
+            });
         };
 
         return Layout;
