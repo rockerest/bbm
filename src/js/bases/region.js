@@ -1,23 +1,24 @@
 define(
-    ["utilities"],
-    function( Utilities ){
-        var Region = function( node ){
-            this.output = node;
-            this.view = undefined;
+    ["underscore", "bases/layout", "utilities"],
+    function( _, Layout, Utilities ){
+        var Region = function( parent, selector ){
+            this.output = parent.find( selector );
+            this.renderable = undefined;
         };
 
-        Region.prototype.assignView = function( view ){
-            view.extend( { "el": this.output } );
-            this.view = view;
+        Region.prototype.assignRenderable = function( renderable ){
+            renderable.prototype.el = this.output;
+
+            this.renderable = renderable;
         };
 
         Region.prototype.render = function( data ){
-            return new this.view( data );
+            new this.renderable( data );
         };
 
-        // Allow short-circuit to show a view
-        Region.prototype.show = function( view, viewData ){
-            this.assignView( view );
+        // Allow short-circuit to show a renderable
+        Region.prototype.show = function( renderable, viewData ){
+            this.assignRenderable( renderable );
             this.render( viewData );
         };
 
