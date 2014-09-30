@@ -3,8 +3,8 @@ define(
         // Libraries
         "backbone",
         // Dependencies
-        "layouts/scheleton", "views/chrome/navigation", "views/main/home"],
-    function( Backbone, ScheletonLayout, NavView, HomeView ){
+        "layouts/scheleton", "layouts/main", "views/main/home"],
+    function( Backbone, ScheletonLayout, MainLayout, HomeView ){
         var mod = {};
 
         mod.register = function( rtr ){
@@ -17,7 +17,7 @@ define(
 
                 layout.render();
 
-                layout.regions.content.show( HomeView );
+                layout.regions.main.show( HomeView );
             });
         };
 
