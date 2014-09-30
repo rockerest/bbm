@@ -1,8 +1,16 @@
 define(
-    ["backbone", "underscore", "text!vw/chrome/sidebar.html"],
-    function( Backbone, _, SidebarTmpl ){
+    [
+        // Libraries
+        "backbone", "underscore",
+        // Dependencies
+        "text!vw/chrome/sidebar.html"
+    ],
+    function(
+        Backbone, _,
+        tmpl
+    ){
         var SidebarView = Backbone.View.extend({
-            "template": _.template( SidebarTmpl ),
+            "template": _.template( tmpl ),
 
             "render": function(){
                 this.$el.html( this.template() );

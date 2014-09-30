@@ -5,18 +5,19 @@ define(
         // Dependencies
         "text!vw/chrome/navigation.html"
     ],
-    function( Backbone, _, NavTmpl ){
+    function(
+        Backbone, _,
+        tmpl
+    ){
         var NavigationView = Backbone.View.extend({
-            "template": _.template( NavTmpl ),
+            "template": _.template( tmpl ),
 
             "render": function(){
-                console.log( this.$el );
                 this.$el.html( this.template() );
                 return this;
             },
 
             "initialize": function(){
-                console.log( "rendering nav" );
                 this.render();
             }
         });
