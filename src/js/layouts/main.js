@@ -9,21 +9,31 @@ define(
     function(
         Backbone, _,
         Utilities,
-        Layout, LytTemplate, SidebarView
+        Layout, tmpl, SidebarView
     ){
-        var MainLayout = function( data ){
-            Layout.call( this, data );
+        var MainLayout = function( options ){
+            var settings = {
+                    "regions": {}
+                },
+                defaults = {
+                    "regions": {
+                        "content":      "#content",
+                        "sidebar":      "aside"
+                    },
+                    "template": tmpl
+                };
 
-            _.extend( this.regions, {
-                "content":  "#content",
-                "sidebar":  "aside"
-            });
+            settings = Utilities.prepareSettings( settings, defaults, options );
 
-            _.extend( this.parts, {
-                "sidebar":   SidebarView
-            });
+            Layout.call( this, settings );
+        };
 
-            this.template = _.template( LytTemplate );
+        MainLayout.prototype.render = function(){
+            Layout.prototype.render.call( this );
+
+            this.regions.sidebar.show( SidebarView );
+
+            return this;
         };
 
         Utilities.extend( Layout, MainLayout );

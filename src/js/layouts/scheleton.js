@@ -5,8 +5,12 @@ define(
 		// Helpers
 		"utilities",
 		// Dependencies
-		"bases/layout", "bases/region", "text!lyt/scheleton.html", "views/chrome/navigation"],
-	function( Backbone, _, Utilities, Layout, Region, tmpl, NavView ){
+		"bases/layout", "text!lyt/scheleton.html", "views/chrome/navigation"],
+	function(
+		Backbone, _,
+		Utilities,
+		Layout, tmpl, NavView
+	){
 		var ScheletonLayout = function( options ){
 			var settings = {
 					"regions": {}
@@ -14,7 +18,7 @@ define(
 				defaults = {
 					"regions": {
 						"navigation":	"nav",
-						"content":		"#main",
+						"main":			"#main",
 						"footer":		"footer"
 					},
 					"template": tmpl,
