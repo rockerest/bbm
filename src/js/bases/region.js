@@ -5,12 +5,13 @@ define(
             this.output = parent.find( selector );
 
             this._renderable = undefined;
+            this._viewData = {};
         };
 
         Region.prototype.render = function(){
             this._renderable.prototype.el = this.output;
 
-            var regionRenderable = new this._renderable(),
+            var regionRenderable = new this._renderable( this._viewData ),
                 layout;
 
             if( _( regionRenderable ).has( "_regions" ) ){
@@ -21,8 +22,9 @@ define(
             }
         };
 
-        Region.prototype.show = function( renderable ){
+        Region.prototype.show = function( renderable, optionalViewData ){
             this._renderable = renderable;
+            this._viewData = optionalViewData;
 
             this.render();
         };
