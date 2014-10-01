@@ -12,31 +12,25 @@ define(
 		Layout, tmpl, NavView
 	){
 		var ScheletonLayout = function( options ){
-			var settings = {
-					"regions": {}
+			var regions = {
+					"navigation":	"nav",
+					"main":			"#main",
+					"footer":		"footer"
 				},
-				defaults = {
-					"regions": {
-						"navigation":	"nav",
-						"main":			"#main",
-						"footer":		"footer"
-					},
-					"template": tmpl,
-					"el": "body"
-				};
+				presets = {
+					"navigation":	NavView
+				},
+				el = "body",
+				_layout = new Layout();
 
-			settings = Utilities.prepareSettings( settings, defaults, options );
+			_layout
+				.addRegions( regions )
+				.setTemplate( tmpl )
+				.addPresets( presets )
+				.setElement( el );
 
-			Layout.call( this, settings );
+			return _layout;
 		};
-
-		ScheletonLayout.prototype.render = function(){
-			Layout.prototype.render.call( this );
-
-			this.regions.navigation.show( NavView );
-		};
-
-		Utilities.extend( Layout, ScheletonLayout );
 
 		return ScheletonLayout;
 	}

@@ -12,31 +12,22 @@ define(
         Layout, tmpl, SidebarView
     ){
         var MainLayout = function( options ){
-            var settings = {
-                    "regions": {}
+            var regions = {
+                    "content":  "#content",
+                    "sidebar":  "aside"
                 },
-                defaults = {
-                    "regions": {
-                        "content":      "#content",
-                        "sidebar":      "aside"
-                    },
-                    "template": tmpl
-                };
+                presets = {
+                    "sidebar":   SidebarView
+                },
+                _layout = new Layout();
 
-            settings = Utilities.prepareSettings( settings, defaults, options );
+            _layout
+                .addRegions( regions )
+                .setTemplate( tmpl )
+                .addPresets( presets );
 
-            Layout.call( this, settings );
+            return _layout;
         };
-
-        MainLayout.prototype.render = function(){
-            Layout.prototype.render.call( this );
-
-            this.regions.sidebar.show( SidebarView );
-
-            return this;
-        };
-
-        Utilities.extend( Layout, MainLayout );
 
         return MainLayout;
     }
