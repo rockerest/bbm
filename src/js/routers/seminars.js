@@ -5,79 +5,51 @@ define(
 
         mod.register = function( rtr ){
             rtr.get( /\/seminars(\/)?/, function(){
-                var layout = new ScheletonLayout({"main": MainLayout});
+                var layout = new ScheletonLayout();
 
-                layout.render({
-                    "construct": {
-                        "main": {
-                            "content": SeminarsView
-                        }
-                    }
-                });
+                layout.render();
+                layout.regions.main.show( MainLayout );
+                layout.regions.main.regions.content.show( SeminarsView );
             });
 
             rtr.get( /\/seminar\/(\d+)(:?\/)?$/, function(){
-                var layout = new ScheletonLayout({"main": MainLayout});
+                var layout = new ScheletonLayout();
 
-                layout.render({
-                    "construct": {
-                        "main": {
-                            "content": SeminarView
-                        }
-                    },
-                    "passdown": {
-                        "main": {
-                            "construct": {
-                                "content": {
-                                    "id": this.params.splat[0]
-                                }
-                            }
-                        }
+                layout.render();
+                layout.regions.main.show( MainLayout );
+                layout.regions.main.regions.content.show(
+                    SeminarView,
+                    {
+                        "id": this.params.splat[0]
                     }
-                });
+                );
             });
 
             rtr.get( /\/seminar\/(\w+)$/, function(){
-                var layout = new ScheletonLayout({"main": MainLayout});
+                var layout = new ScheletonLayout();
 
-                layout.render({
-                    "construct": {
-                        "main": {
-                            "content": SeminarView
-                        }
-                    },
-                    "passdown": {
-                        "main": {
-                            "construct": {
-                                "content": {
-                                    "action": this.params.splat[0]
-                                }
-                            }
-                        }
+                layout.render();
+                layout.regions.main.show( MainLayout );
+                layout.regions.main.regions.content.show(
+                    SeminarView,
+                    {
+                        "action": this.params.splat[0]
                     }
-                });
+                );
             });
 
             rtr.get( /seminar\/(\w+)\/([\d\w\-]+)(:?\/)?$/, function(){
-                var layout = new ScheletonLayout({"main": MainLayout});
+                var layout = new ScheletonLayout();
 
-                layout.render({
-                    "construct": {
-                        "main": {
-                            "content": SeminarView
-                        }
-                    },
-                    "passdown": {
-                        "main": {
-                            "construct": {
-                                "content": {
-                                    "action": this.params.splat[0] || "",
-                                    "id": this.params.splat[1] || ""
-                                }
-                            }
-                        }
+                layout.render();
+                layout.regions.main.show( MainLayout );
+                layout.regions.main.regions.content.show(
+                    SeminarView,
+                    {
+                        "action": this.params.splat[0] || "",
+                        "id": this.params.splat[1] || ""
                     }
-                });
+                );
             });
         };
 

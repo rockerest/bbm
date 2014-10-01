@@ -6,7 +6,10 @@ define(
         "text!vw/seminars/seminar.html", "collections/seminars", "collections/students", "events/seminars"
     ],
 
-    function( Backbone, _, SeminarTmpl, Seminars, Students, vent ){
+    function(
+        Backbone, _,
+        tmpl, Seminars, Students, vent
+    ){
         var SeminarsView = Backbone.View.extend({
                 "template": _.template( SeminarTmpl ),
 

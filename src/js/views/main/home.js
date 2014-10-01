@@ -5,9 +5,12 @@ define(
         // Dependencies
         "text!vw/main/home.html"
     ],
-    function( Backbone, _, HomeTmpl ){
+    function(
+        Backbone, _,
+        tmpl
+    ){
         var MainHomeView = Backbone.View.extend({
-            "template": _.template( HomeTmpl ),
+            "template": _.template( tmpl ),
 
             "render": function(){
                 this.$el.html( this.template() );

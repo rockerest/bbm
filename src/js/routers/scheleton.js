@@ -4,7 +4,10 @@ define(
         "backbone",
         // Dependencies
         "layouts/scheleton", "layouts/main", "views/main/home"],
-    function( Backbone, ScheletonLayout, MainLayout, HomeView ){
+    function(
+        Backbone,
+        ScheletonLayout, MainLayout, HomeView
+    ){
         var mod = {};
 
         mod.register = function( rtr ){

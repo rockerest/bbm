@@ -5,26 +5,17 @@ define(
 
         mod.register = function( rtr ){
             rtr.get( /\/error\/(\d+)\/(.*)?$/, function(){
-                var layout = new ScheletonLayout({"main": MainLayout}),
-                    self = this;
+                var layout = new ScheletonLayout();
 
-                layout.render({
-                    "construct": {
-                        "main": {
-                            "content": ErrorView
-                        }
-                    },
-                    "passdown": {
-                        "main": {
-                            "construct": {
-                                "content": {
-                                    "error": self.params.splat[0],
-                                    "route": self.params.splat[1]
-                                }
-                            }
-                        }
+                layout.render();
+                layout.regions.main.show( MainLayout );
+                layout.regions.main.regions.content.show(
+                    ErrorView,
+                    {
+                        "error": this.params.splat[0],
+                        "route": this.params.splat[1]
                     }
-                });
+                );
             });
         };
 

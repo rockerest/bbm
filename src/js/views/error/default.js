@@ -5,9 +5,12 @@ define(
         // Dependencies
         "text!vw/errors/default.html"
     ],
-    function( Backbone, _, DefaultTmpl ){
+    function(
+        Backbone, _,
+        tmpl
+    ){
         var DefaultErrorView = Backbone.View.extend({
-            "template": _.template( DefaultTmpl ),
+            "template": _.template( tmpl ),
 
             "render": function(){
                 this.$el.html( this.template({ "error": this.error, "route": this.route }) );
