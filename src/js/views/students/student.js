@@ -8,10 +8,10 @@ define(
 
     function(
         Backbone, _,
-        StudentTmpl, Students, Seminars, vent
+        tmpl, Students, Seminars, vent
     ){
         var StudentsView = Backbone.View.extend({
-                "template": _.template( StudentTmpl ),
+                "template": _.template( tmpl ),
 
                 "events": {
                     "keyup input#name": function( e ){

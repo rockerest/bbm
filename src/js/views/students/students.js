@@ -8,10 +8,10 @@ define(
 
     function(
         Backbone, _,
-        StudentsTmpl, Students, vent
+        tmpl, Students, vent
     ){
         var StudentsView = Backbone.View.extend({
-                "template": _.template( StudentsTmpl ),
+                "template": _.template( tmpl ),
 
                 "events": {
                     "click button": function(){ vent.trigger( "add:student" ); },

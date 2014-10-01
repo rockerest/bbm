@@ -11,7 +11,7 @@ define(
         tmpl, Seminars, Students, vent
     ){
         var SeminarsView = Backbone.View.extend({
-                "template": _.template( SeminarTmpl ),
+                "template": _.template( tmpl ),
 
                 "events": {
                     "keyup input#name": function( e ){
