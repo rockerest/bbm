@@ -1,25 +1,30 @@
 define(
-    ["underscore", "bases/layout", "utilities"],
-    function( _, Layout, Utilities ){
+    ["underscore"],
+    function( _ ){
         var Region = function( parent, selector ){
             this.output = parent.find( selector );
-            this.renderable = undefined;
+
+            this._renderable = undefined;
         };
 
-        Region.prototype.assignRenderable = function( renderable ){
-            renderable.prototype.el = this.output;
+        Region.prototype.render = function(){
+            this._renderable.prototype.el = this.output;
 
-            this.renderable = renderable;
+            var regionRenderable = new this._renderable(),
+                layout;
+
+            if( _( regionRenderable ).has( "_regions" ) ){
+                regionRenderable.setElement( this.output );
+                layout = regionRenderable.render();
+
+                this.regions = layout.regions;
+            }
         };
 
-        Region.prototype.render = function( data ){
-            new this.renderable( data );
-        };
+        Region.prototype.show = function( renderable ){
+            this._renderable = renderable;
 
-        // Allow short-circuit to show a renderable
-        Region.prototype.show = function( renderable, viewData ){
-            this.assignRenderable( renderable );
-            this.render( viewData );
+            this.render();
         };
 
         return Region;

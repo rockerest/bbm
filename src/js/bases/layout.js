@@ -1,37 +1,95 @@
 define(
     ["backbone", "underscore", "bases/region"],
     function( Backbone, _, Region ){
-        var Layout = function( options ){
-                this.options = options;
-                this.regions = {};
-            },
-            createRegions;
-
-        Layout.prototype.render = function(){
-            var self = this,
-                view = Backbone.View.extend({
-                    "el": self.options.el,
-                    "template": _.template( self.options.template ),
-
-                    "render": function(){
-                        this.$el.html( this.template() );
-                        createRegions( self, self.options.regions, this.$el );
-
-                        return this;
-                    },
-
-                    "initialize": function(){
-                        this.render();
-                    }
-                });
-
-
-            return new view();
+        var Layout = function(){
+            this._regions = {};
+            this._presets = {};
+            this._el = "";
+            this._template = "";
+            this._currentView = undefined;
         };
 
-        createRegions = function( layout, regions, parent ){
+        Layout.prototype.addRegions = function( regions ){
+            var self = this;
+
             _( regions ).each( function( selector, name ){
-                layout.regions[ name ] = new Region( parent, selector );
+                self.addRegion( name, selector );
+            });
+
+            return this;
+        };
+
+        Layout.prototype.addRegion = function( name, selector ){
+            this._regions[ name ] = selector;
+
+            return this;
+        };
+
+        Layout.prototype.setElement = function( selector ){
+            this._el = selector;
+
+            return this;
+        };
+
+        Layout.prototype.setTemplate = function( html ){
+            this._template = html;
+
+            return this;
+        };
+
+        Layout.prototype.addPresets = function( presets ){
+            var self = this;
+
+            _( presets ).each( function( renderable, name ){
+                self._presets[ name ] = renderable;
+            });
+
+            return this;
+        };
+
+        Layout.prototype.addPreset = function( name, renderable ){
+            this._presets[ name ] = renderable;
+        };
+
+        Layout.prototype.render = function(){
+            var view = this.createView( this._el, this._template, this._regions ),
+                self = this;
+
+            this._currentView = new view();
+            this.regions = this._regions;
+
+            _( this._presets ).each( function( renderable, name ){
+                self.regions[ name ].show( renderable );
+            });
+
+            return this;
+        };
+
+        Layout.prototype.createView = function( el, tmpl, regions ){
+            var self = this;
+
+            return Backbone.View.extend({
+                "el": el,
+                "template": _.template( tmpl ),
+
+                "render": function(){
+                    this.$el.html( this.template() );
+                    self.createRegions( regions, this.$el );
+
+                    return this;
+                },
+
+                "initialize": function(){
+                    this.render();
+                }
+            });
+        };
+
+        Layout.prototype.createRegions = function( regions, parent ){
+            var self = this;
+
+            _( regions ).each( function( selector, name ){
+                self._regions[ name ] = new Region( parent, selector );
             });
         };
 
