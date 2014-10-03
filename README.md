@@ -1,4 +1,4 @@
 scheleton
 ===
 
-Trying to figure out Backbone
+Backbone application using Localstorage, and Layouts & Regions (Ribcage)[https://github.com/rockerest/ribcage]
