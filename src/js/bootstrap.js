@@ -10,6 +10,7 @@ requirejs.config({
         "underscore":           "../../vendor/underscore/underscore",
         "sammy":                "../../vendor/sammy/sammy",
         "jquery":               ["//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery", "../../vendor/jquery/jquery"],
+        "ribcage":              "../../vendor/ribcage/ribcage",
 
         // LIBRARY PLUGINS
         "text":                 "../../vendor/requirejs-text/text",

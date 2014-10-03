@@ -1,15 +1,15 @@
 define(
     [
         // Libraries
-        "backbone", "underscore",
+        "backbone", "underscore", "ribcage",
         // Helpers
         "utilities",
         // Dependencies
-        "bases/layout", "text!lyt/main.html", "views/chrome/sidebar"],
+        "text!lyt/main.html", "views/chrome/sidebar"],
     function(
-        Backbone, _,
+        Backbone, _, Ribcage,
         Utilities,
-        Layout, tmpl, SidebarView
+        tmpl, SidebarView
     ){
         var MainLayout = function( options ){
             var regions = {
@@ -19,7 +19,7 @@ define(
                 presets = {
                     "sidebar":   SidebarView
                 },
-                _layout = new Layout();
+                _layout = new Ribcage();
 
             _layout
                 .addRegions( regions )

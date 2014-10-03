@@ -55,6 +55,7 @@ module.exports = function( grunt ){
                         "underscore":           "../../vendor/underscore/underscore",
                         "sammy":                "../../vendor/sammy/sammy",
                         "jquery":               "empty:",
+                        "ribcage":              "../../vendor/ribcage/ribcage",
 
                         // LIBRARY PLUGINS
                         "text":                 "../../vendor/requirejs-text/text",

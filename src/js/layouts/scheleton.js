@@ -1,15 +1,15 @@
 define(
 	[
 		// Libraries
-		"backbone", "underscore",
+		"backbone", "underscore", "ribcage",
 		// Helpers
 		"utilities",
 		// Dependencies
-		"bases/layout", "text!lyt/scheleton.html", "views/chrome/navigation"],
+		"text!lyt/scheleton.html", "views/chrome/navigation"],
 	function(
-		Backbone, _,
+		Backbone, _, Ribcage,
 		Utilities,
-		Layout, tmpl, NavView
+		tmpl, NavView
 	){
 		var ScheletonLayout = function( options ){
 			var regions = {
@@ -21,7 +21,7 @@ define(
 					"navigation":	NavView
 				},
 				el = "body",
-				_layout = new Layout();
+				_layout = new Ribcage();
 
 			_layout
 				.addRegions( regions )
