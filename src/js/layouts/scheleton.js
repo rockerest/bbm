@@ -18,7 +18,9 @@ define(
 					"footer":		"footer"
 				},
 				presets = {
-					"navigation":	NavView
+					"navigation": {
+						"object": NavView
+					}
 				},
 				el = "body",
 				_layout = new Ribcage();

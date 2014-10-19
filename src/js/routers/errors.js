@@ -8,8 +8,8 @@ define(
                 var layout = new ScheletonLayout();
 
                 layout.render();
-                layout.regions.main.show( MainLayout );
-                layout.regions.main.regions.content.show(
+                layout.explore( "main" ).show( MainLayout );
+                layout.explore( "main.content" ).show(
                     ErrorView,
                     {
                         "error": this.params.splat[0],

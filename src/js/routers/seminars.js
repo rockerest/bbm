@@ -8,16 +8,16 @@ define(
                 var layout = new ScheletonLayout();
 
                 layout.render();
-                layout.regions.main.show( MainLayout );
-                layout.regions.main.regions.content.show( SeminarsView );
+                layout.explore( "main" ).show( MainLayout );
+                layout.explore( "main.content" ).show( SeminarsView );
             });
 
             rtr.get( /\/seminar\/(\d+)(:?\/)?$/, function(){
                 var layout = new ScheletonLayout();
 
                 layout.render();
-                layout.regions.main.show( MainLayout );
-                layout.regions.main.regions.content.show(
+                layout.explore( "main" ).show( MainLayout );
+                layout.explore( "main.content" ).show(
                     SeminarView,
                     {
                         "id": this.params.splat[0]
@@ -29,8 +29,8 @@ define(
                 var layout = new ScheletonLayout();
 
                 layout.render();
-                layout.regions.main.show( MainLayout );
-                layout.regions.main.regions.content.show(
+                layout.explore( "main" ).show( MainLayout );
+                layout.explore( "main.content" ).show(
                     SeminarView,
                     {
                         "action": this.params.splat[0]
@@ -42,8 +42,8 @@ define(
                 var layout = new ScheletonLayout();
 
                 layout.render();
-                layout.regions.main.show( MainLayout );
-                layout.regions.main.regions.content.show(
+                layout.explore( "main" ).show( MainLayout );
+                layout.explore( "main.content" ).show(
                     SeminarView,
                     {
                         "action": this.params.splat[0] || "",

@@ -19,8 +19,9 @@ define(
                 var layout = new ScheletonLayout();
 
                 layout.render();
-                layout.regions.main.show( MainLayout );
-                layout.regions.main.regions.content.show( HomeView );
+
+                layout.explore( "main" ).show( MainLayout );
+                layout.explore( "main.content" ).show( HomeView );
             });
         };
 

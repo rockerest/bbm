@@ -17,7 +17,9 @@ define(
                     "sidebar":  "aside"
                 },
                 presets = {
-                    "sidebar":   SidebarView
+                    "sidebar": {
+                        "object": SidebarView
+                    }
                 },
                 _layout = new Ribcage();
 
